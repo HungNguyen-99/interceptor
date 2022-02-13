@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ServiceJsonService } from './service-json.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-app';
+
+  constructor(private dataService: ServiceJsonService){}
+
+  ngOnInit(): void {
+    this.dataService.getMovies().subscribe((data)=>{
+      console.log('appComponent', data);
+    });
+  }
 }
